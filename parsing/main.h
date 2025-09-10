@@ -228,7 +228,6 @@ void			clean_all_tokens(t_token *curr);
 
 //-----------//herdoc:
 
-char			*remove_quotes_in_herdoc(const char *str);
 void			ft_exec_cmd(t_command *cmd, t_env *env_list, t_data *dt);		
 bool			ft_process_heredocs(t_command *cmd, t_env *env_list);
 void			init_herdoc_fds(t_command *cmd);

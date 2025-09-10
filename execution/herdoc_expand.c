@@ -1,29 +1,5 @@
 #include ".././parsing/main.h"
 
-char	*remove_quotes_in_herdoc(const char *str)
-{
-	size_t	len;
-	char	tmp;
-	char	*res;
-
-	if (!str)
-		return (NULL);
-	len = ft_strlen(str);
-	if (len >= 2 && ((str[0] == '"' && str[len - 1] == '"')
-			|| (str[0] == '\'' && str[len - 1] == '\'')))
-	{
-		res = malloc(len - 1);
-		if (!res)
-			return (NULL);
-		tmp = ((char *)str)[len - 1];
-		((char *)str)[len - 1] = '\0';
-		my_strcpy(res, str + 1);
-		((char *)str)[len - 1] = tmp;
-		return (res);
-	}
-	return (ft_strdup(str));
-}
-
 static void	handle_variable_herdoc(const char *input, t_fir_expand_elements *st)
 {
 	if (input[st->i + 1] == '?')

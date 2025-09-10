@@ -36,7 +36,7 @@ static void	expand_cmd_heredoc(char **line, t_command *cmd, int fd, t_env *env)
 	}
 }
 
-static void	heredoc_write_line(char *line, t_command *cmd,
+static void	heredoc_expand_line(char *line, t_command *cmd,
 							t_env *env_list)
 {
 	if (cmd->red && cmd->red->expand_variable == 0)
@@ -51,23 +51,19 @@ static void	heredoc_write_line(char *line, t_command *cmd,
 static void	heredoc_loop(t_command *cmd, char *name, t_env *env_list)
 {
 	char	*line;
-	char	*line_without_quotes;
 
 	while (1)
 	{
 		line = readline("> ");
 		if (!line)
 			break ;
-		line_without_quotes = remove_quotes_in_herdoc(line);
-		if (!ft_check_strcmp(line_without_quotes, name))
+		if (!ft_check_strcmp(line, name))
 		{
 			free(line);
-			free(line_without_quotes);
 			line = NULL;
 			break ;
 		}
-		free(line_without_quotes);
-		heredoc_write_line(line, cmd, env_list);
+		heredoc_expand_line(line, cmd, env_list);
 		free(line);
 	}
 }
