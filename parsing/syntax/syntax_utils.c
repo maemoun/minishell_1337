@@ -52,24 +52,24 @@ char	*return_str(t_type type)
 	return (ft_strdup(""));
 }
 
-int	contains_unclosed_quote(const char *str)
+int	contains_unclosed_quote(const char	*str)
 {
-	int		i;
-	char	quote;
+	int	i;
+	int	in_single;
+	int	in_double;
 
 	i = 0;
+	in_single = 0;
+	in_double = 0;
 	while (str[i])
 	{
-		if (str[i] == '\'' || str[i] == '"')
-		{
-			quote = str[i++];
-			while (str[i] && str[i] != quote)
-				i++;
-			if (!str[i])
-				return (1);
-		}
-		if (str[i])
-			i++;
+		if (str[i] == '\'' && !in_double)
+			in_single = !in_single;
+		else if (str[i] == '"' && !in_single)
+			in_double = !in_double;
+		i++;
 	}
+	if (in_single || in_double)
+		return (1);
 	return (0);
 }
