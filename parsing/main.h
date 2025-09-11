@@ -6,7 +6,7 @@
 /*   By: abdo <abdo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 14:43:46 by abdo              #+#    #+#             */
-/*   Updated: 2025/09/08 13:10:39 by abdo             ###   ########.fr       */
+/*   Updated: 2025/09/11 15:25:44 by abdo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ char			*append_str(char *dest, const char *src);
 char			*append_char(char *str, char c);
 int				is_var_char(char c);
 char			*preprocess_escapes(const char *str);
+char			*copy_escapes(const char *str);
 char			*expand_exit_status(char *res, t_data *dt);
 void			handle_variable(const char *input, t_fir_expand_elements *st);
 void			handle_plain_char(const char *input, t_fir_expand_elements *st);
@@ -223,6 +224,7 @@ void			free_tokens(t_token *list);
 void			free_commands(t_command *cmd);
 void			free_env_list(t_env *env);
 void			clean_all_tokens(t_token *curr);
+void			free_4(char *a, char *b, char *c, char *d);
 
 //---------------------------//exeution//----------------------------//
 

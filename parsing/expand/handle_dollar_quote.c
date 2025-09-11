@@ -6,11 +6,36 @@
 /*   By: abdo <abdo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 18:42:26 by abdo              #+#    #+#             */
-/*   Updated: 2025/09/07 17:54:01 by abdo             ###   ########.fr       */
+/*   Updated: 2025/09/11 15:26:14 by abdo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
+
+char	*copy_escapes(const char *str)
+{
+	int		i;
+	int		j;
+	char	*new_str;
+
+	new_str = malloc(ft_strlen(str) + 1);
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] == '\\' && str[i + 1] == '$')
+		{
+			new_str[j++] = 1;
+			i += 2;
+		}
+		else
+			new_str[j++] = str[i++];
+	}
+	new_str[j] = '\0';
+	return (new_str);
+}
 
 char	*extract_dollar_quote(const char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: abdo <abdo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 17:01:43 by abdo              #+#    #+#             */
-/*   Updated: 2025/08/31 00:44:03 by abdo             ###   ########.fr       */
+/*   Updated: 2025/09/11 15:21:13 by abdo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,32 @@ int	get_token_end(char *s, int i)
 		&& s[i] != '<' && s[i] != '>' && s[i] != '|')
 		i++;
 	return (i);
+}
+
+void	clean_all_tokens(t_token *curr)
+{
+	size_t	len;
+	char	*clean;
+
+	while (curr)
+	{
+		if (curr->value && curr->has_quote)
+		{
+			len = ft_strlen(curr->value);
+			if ((curr->value[0] == '\'' && curr->value[len - 1] == '\'')
+				|| (curr->value[0] == '"' && curr->value[len - 1] == '"'))
+			{
+				clean = ft_strndup(curr->value + 1, len - 2);
+				free(curr->value);
+				curr->value = clean;
+			}
+		}
+		else if (curr->value)
+		{
+			clean = remove_quotes(curr->value);
+			free(curr->value);
+			curr->value = clean;
+		}
+		curr = curr->next;
+	}
 }

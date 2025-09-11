@@ -6,7 +6,7 @@
 /*   By: abdo <abdo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 17:56:35 by abdo              #+#    #+#             */
-/*   Updated: 2025/08/21 14:56:43 by abdo             ###   ########.fr       */
+/*   Updated: 2025/09/11 12:33:18 by abdo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*return_str(t_type type)
 	return (ft_strdup(""));
 }
 
-int	contains_unclosed_quote(const char	*str)
+int	contains_unclosed_quote(const char *str)
 {
 	int	i;
 	int	in_single;

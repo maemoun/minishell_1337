@@ -6,7 +6,7 @@
 /*   By: abdo <abdo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 14:30:41 by abdo              #+#    #+#             */
-/*   Updated: 2025/08/21 16:12:04 by abdo             ###   ########.fr       */
+/*   Updated: 2025/09/11 14:47:26 by abdo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,26 @@ void	free_env_list(t_env *env)
 	}
 }
 
-void	clean_all_tokens(t_token *curr)
+void	free_4(char *a, char *b, char *c, char *d)
 {
-	char	*clean;
-
-	while (curr)
+	if (a)
 	{
-		clean = remove_quotes(curr->value);
-		free(curr->value);
-		curr->value = clean;
-		curr = curr->next;
+		free(a);
+		a = NULL;
+	}
+	if (b)
+	{
+		free(b);
+		b = NULL;
+	}
+	if (c)
+	{
+		free(c);
+		c = NULL;
+	}
+	if (d)
+	{
+		free(d);
+		d = NULL;
 	}
 }
