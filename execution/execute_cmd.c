@@ -107,7 +107,6 @@ void	execute_cmd(t_command *cmd, t_env *env_list, t_data *dt)
 				return ;
 		}
 		fork_pid = fork();
-		// printf("fork pid: %d\n", fork_pid);
 		if (fork_pid < 0)
 			perror(FORK_FAILD);
 		if (fork_pid == 0)
