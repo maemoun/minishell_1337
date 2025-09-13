@@ -33,13 +33,13 @@ t_env	*list_new_node(char *value, char *key, bool eg)
 
 void	p2char(char ***ptr)
 {
-	int	r;
+	int	i;
 
 	if (!ptr || !*ptr)
 		return ;
-	r = 0;
-	while ((*ptr)[r])
-		free((*ptr)[r++]);
+	i = 0;
+	while ((*ptr)[i])
+		free((*ptr)[i++]);
 	free(*ptr);
 	*ptr = NULL;
 }

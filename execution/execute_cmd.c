@@ -107,14 +107,12 @@ void	execute_cmd(t_command *cmd, t_env *env_list, t_data *dt)
 				return ;
 		}
 		fork_pid = fork();
+		// printf("fork pid: %d\n", fork_pid);
 		if (fork_pid < 0)
 			perror(FORK_FAILD);
 		if (fork_pid == 0)
-		{
 			child_process(env_list, list, dt);
-		}
-		else
-			parent_process(list);
+		parent_process(list);
 		list = list->next_command;
 	}
 	wait_and_exit(fork_pid, dt);
