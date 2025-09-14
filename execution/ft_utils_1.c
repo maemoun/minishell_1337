@@ -1,15 +1,5 @@
 #include ".././parsing/main.h"
 
-int	ft_strcmpp(char *s1, char *s2)
-{
-	while (*s1 && *s2 && (*s1 == *s2))
-	{
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
-}
-
 int	ft_check_strcmp(const char *s1, const char *s2)
 {
 	if (!s1 || !s2)

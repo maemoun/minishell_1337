@@ -66,27 +66,27 @@ char	*resolve_cd_path(char *str, t_env *env_list)
 int	ft_cd(t_env *env_list, char *path)
 {
 	char	*oldpwd;
-	char	*p;
+	char	*pth;
 
-	p = NULL;
+	pth = NULL;
 	oldpwd = getcwd(NULL, 0);
 	if (!oldpwd)
-		return (print_error(errno, p, "cd"), 1);
-	p = resolve_cd_path(path, env_list);
-	if (!p)
+		return (print_error(errno, pth, "cd"), 1);
+	pth = resolve_cd_path(path, env_list);
+	if (!pth)
 		return (free(oldpwd), 1);
-	if (chdir(p) == -1)
-		return (free(oldpwd), print_error(errno, p, "cd"), 1);
+	if (chdir(pth) == -1)
+		return (free(oldpwd), print_error(errno, pth, "cd"), 1);
 	if (!ft_strncmp_2(path, "~/", 2))
-		free(p);
-	p = getcwd(NULL, 0);
-	if (!p)
-		return (free(oldpwd), print_error(errno, p, "cd"), 1);
-	update_env("PWD", p, &env_list);
+		free(pth);
+	pth = getcwd(NULL, 0);
+	if (!pth)
+		return (free(oldpwd), print_error(errno, pth, "cd"), 1);
+	update_env("PWD", pth, &env_list);
 	update_env("OLDPWD", oldpwd, &env_list);
 	if (!ft_check_strcmp(path, "-"))
-		printf("%s\n", p);
-	free(p);
+		printf("%s\n", pth);
+	free(pth);
 	free(oldpwd);
 	return (0);
 }
